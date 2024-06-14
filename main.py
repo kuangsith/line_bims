@@ -4,6 +4,7 @@ import requests
 import config
 import line_noti
 import datetime
+import pytz
 
 tablist = config.tablist()
 unit_dict = config.unit_dict()
@@ -11,7 +12,10 @@ npoints = config.npoints()
 
 msg = "Water Report\n"
 
-msg += f"Timestamp: {datetime.datetime.now().strftime(format = '%Y-%m-%d %H:%M:%S')}\n"
+bangkok_tz = pytz.timezone('Asia/Bangkok')
+now_utc = datetime.datetime.now(pytz.utc)
+now_bangkok = now_utc.astimezone(bangkok_tz)
+msg += f"Timestamp: {now_bangkok.strftime(format = '%Y-%m-%d %H:%M:%S')}\n"
 
 msg += "-"*24 +"\n"
 
