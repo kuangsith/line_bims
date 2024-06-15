@@ -21,7 +21,7 @@ msg += "-"*24 +"\n"
 
 for tabname in tablist:
 
-    msg += f"Data from table {tabname}\n\n"
+    msg += f"Data from table {tabname}\n"
 
     url = f'http://110.49.150.135:4002/CPU/?command=DataQuery&uri=dl:tab{tabname}&format=html&mode=most-recent&p1={npoints}&p2='
     page = requests.get(url)
@@ -36,6 +36,8 @@ for tabname in tablist:
         data.append([ele for ele in cols if ele])
 
     df = pd.DataFrame(data[1:],columns=data[0])
+
+    msg += f"Number of data points: {df.shape[0]}\n\n"
 
     collist= [col for col in df.columns if col not in ['TimeStamp','Record']]
 
