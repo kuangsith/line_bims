@@ -29,7 +29,7 @@ for tabname in tablist:
 
     msg += f"Data from table {tabname}\n"
 
-    url = f'http://110.49.150.135:4002/CPU/?command=DataQuery&uri=dl:tabACTW&format=html&mode=date-range&p1={date_start}T18:00:00&p2={date_end}T18:00:00'
+    url = f'http://110.49.150.135:4002/CPU/?command=DataQuery&uri=dl:tab{tabname}&format=html&mode=date-range&p1={date_start}T18:00:00&p2={date_end}T18:00:00'
     page = requests.get(url)
     soup = BeautifulSoup(page.text, 'html.parser')
 
