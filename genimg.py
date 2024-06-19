@@ -210,7 +210,7 @@ def main():
     fig.suptitle(f'Water Quality: Date {run_date}', fontsize=16)
     fig.tight_layout()
 
-    plt.savefig('tempo.png')
+    plt.savefig('temp.png')
     # plt.show()
 
     watermark('temp.png','./overlay.png')

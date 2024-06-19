@@ -4,4 +4,4 @@ requests
 pytz
 Pillow
 imgurpython
-seaborn
+seaborn==0.12.2
