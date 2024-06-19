@@ -2,3 +2,6 @@ bs4==0.0.0
 pandas
 requests
 pytz
+Pillow
+imgurpython
+seaborn
