@@ -76,8 +76,11 @@ print(f'Total Time spent: {time.time()-start_time:.2f}')
 
 
 ### Sending to Line OA #####
-line_noti.sendmsg(msg)
-line_noti.sendimg(imgurl)
+# line_noti.sendmsg(msg)
+# line_noti.sendimg(imgurl)
+
+line_noti.send_broadcast(msg,imgurl)
+
 print(f'Send messages')
 print(f'Total Time spent: {time.time()-start_time:.2f}')
 
