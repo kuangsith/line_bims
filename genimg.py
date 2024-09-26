@@ -18,32 +18,32 @@ run_date = now_bangkok.strftime(format="%Y-%m-%d")
 
 
 
-def get_dat(tabname,ndays,run_ate = run_date):
-    date_end = run_date
-    date_start = ((datetime.datetime.strptime(date_end,"%Y-%m-%d")) + datetime.timedelta(days=-ndays)).strftime(format = "%Y-%m-%d")
-    url = f'http://110.49.150.135:4002/CPU/?command=DataQuery&uri=dl:tab{tabname}&format=html&mode=date-range&p1={date_start}T00:00:00&p2={date_end}T18:00:00'
-    page = requests.get(url)
-    soup = BeautifulSoup(page.text, 'html.parser')
+# def get_dat(tabname,ndays,run_ate = run_date):
+#     date_end = run_date
+#     date_start = ((datetime.datetime.strptime(date_end,"%Y-%m-%d")) + datetime.timedelta(days=-ndays)).strftime(format = "%Y-%m-%d")
+#     url = f'http://110.49.150.135:4002/CPU/?command=DataQuery&uri=dl:tab{tabname}&format=html&mode=date-range&p1={date_start}T00:00:00&p2={date_end}T18:00:00'
+#     page = requests.get(url)
+#     soup = BeautifulSoup(page.text, 'html.parser')
 
-    table = soup.find('table')
-    rows = table.find_all('tr')
-    data = []
-    for row in rows:
-        cols = row.find_all(['td', 'th'])
-        cols = [ele.text.strip() for ele in cols]
-        data.append([ele for ele in cols if ele])
+#     table = soup.find('table')
+#     rows = table.find_all('tr')
+#     data = []
+#     for row in rows:
+#         cols = row.find_all(['td', 'th'])
+#         cols = [ele.text.strip() for ele in cols]
+#         data.append([ele for ele in cols if ele])
 
-    df = pd.DataFrame(data[1:],columns=data[0])
+#     df = pd.DataFrame(data[1:],columns=data[0])
 
-    collist= [col for col in df.columns if col not in ['TimeStamp','Record']]
+#     collist= [col for col in df.columns if col not in ['TimeStamp','Record']]
 
-    df['TimeStamp'] = pd.to_datetime(df['TimeStamp']).dt.tz_localize(bangkok_tz)
-    df['date'] = df['TimeStamp'].dt.date.astype('str')
+#     df['TimeStamp'] = pd.to_datetime(df['TimeStamp']).dt.tz_localize(bangkok_tz)
+#     df['date'] = df['TimeStamp'].dt.date.astype('str')
 
-    for col in collist:
-        df[col] = df[col].astype('float')
+#     for col in collist:
+#         df[col] = df[col].astype('float')
 
-    return df
+#     return df
 
 def watermark(imgpath,overlaypath):
 
@@ -76,11 +76,12 @@ def watermark(imgpath,overlaypath):
 
 
 
-def main():
+def main(df_ACLW,df_ACTW,df_AROW):
     fig, axs = plt.subplots(2, 2, figsize=(10, 8))
 
     ########################################################################################################################################
-    df = get_dat('ACLW',6)
+    df = df_ACLW.copy()
+    df['date'] = df['TimeStamp'].dt.strftime("%Y-%m-%d")
     # df = pd.read_pickle('ACLW_temp.pkl')
 
     col = 'Chlorophyll'
@@ -112,7 +113,8 @@ def main():
     axs[0, 1].tick_params(axis='x', rotation=45)
     ########################################################################################################################################
 
-    df = get_dat('ACTW',6)
+    df = df_ACTW.copy()
+    df['date'] = df['TimeStamp'].dt.strftime("%Y-%m-%d")
     # df = pd.read_pickle('ACTW_temp.pkl')
 
     col = 'Salinity'
@@ -173,7 +175,8 @@ def main():
 
     ########################################################################################################################################
 
-    df = get_dat('AROW',6)
+    df = df_AROW.copy()
+    df['date'] = df['TimeStamp'].dt.strftime("%Y-%m-%d")
     # df = pd.read_pickle('AROW_temp.pkl')
 
     col = 'DO_mgL'
