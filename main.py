@@ -8,6 +8,7 @@ import warnings
 import genimg
 import line_noti
 warnings.filterwarnings("ignore", category=UserWarning, module="google.cloud.bigquery")
+import urllib.request 
 
 
 def main(request):
@@ -66,6 +67,10 @@ def main(request):
             msg += "-"*24 + "\n"
             print(f'Get median for {tabname}')
 
+        ## Create Temp overlay.png
+        urllib.request.urlretrieve( 
+        'https://lh3.googleusercontent.com/d/13zup9tx9Lb1lQQDJu2En47eQ-G7EgdiI=w720?authuser=0','overlay.png')
+        
         genimg.main(df_ACLW,df_ACTW,df_AROW)
 
         imgurl = line_noti.upload_image_to_imgur('watermark_temp.png')

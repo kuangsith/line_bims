@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
 import pytz
+from config import imgur_cid
 from PIL import Image, ImageEnhance
 
 bangkok_tz = pytz.timezone('Asia/Bangkok')
@@ -51,6 +52,7 @@ def watermark(imgpath,overlaypath):
     img1 = Image.open(imgpath) 
 
     # Opening the secondary image (overlay image) 
+
     img2 = Image.open(overlaypath)
 
     # Make img2 50% transparent

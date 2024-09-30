@@ -31,8 +31,8 @@ UID = 'U85661fcc04a6620161e66e5dbb2bc03d'
 imgur_cid = '0d7a115c6415999'
 imgur_secret = '90f293280b243a0e2fabb664b2a1ea6255fe38d2'
 
-# # Kuang Dev Bot
-# token = 'nTzbrOCTsKEgNtRadgEeLCjQZ4zRdsFgJGi4PBQ6kTopoyh3WsC172Y3o+7XdVNivsry5kEVdMwG5S2l+cW2zpaC2Wku7ovFU9P/UNioiKUi3akimhUivEvzvndnkoIXKtBIOa1uS1hZyUQadBCI4QdB04t89/1O/w1cDnyilFU='
+# Kuang Dev Bot
+token = 'nTzbrOCTsKEgNtRadgEeLCjQZ4zRdsFgJGi4PBQ6kTopoyh3WsC172Y3o+7XdVNivsry5kEVdMwG5S2l+cW2zpaC2Wku7ovFU9P/UNioiKUi3akimhUivEvzvndnkoIXKtBIOa1uS1hZyUQadBCI4QdB04t89/1O/w1cDnyilFU='
 
-## Test Account
-token = 'CilXi4lvFwsElE9CYMuy6W2bmmYeWTIIKTbf4tdEuh9sD8cjYiEh3SGHNSOj/rdklyBrz3VA/+1uPwxwZJ98qV+AMhX0lCSpkhfCgbDoHvuGA7Bcx8DE9TT6XzEKf0H5JkE50+fVSAvgAgkzoMmGFgdB04t89/1O/w1cDnyilFU='
+# ## Test Account
+# token = 'CilXi4lvFwsElE9CYMuy6W2bmmYeWTIIKTbf4tdEuh9sD8cjYiEh3SGHNSOj/rdklyBrz3VA/+1uPwxwZJ98qV+AMhX0lCSpkhfCgbDoHvuGA7Bcx8DE9TT6XzEKf0H5JkE50+fVSAvgAgkzoMmGFgdB04t89/1O/w1cDnyilFU='
